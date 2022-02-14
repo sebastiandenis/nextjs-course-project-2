@@ -2,6 +2,7 @@ import type { GetStaticProps, NextPage } from 'next';
 import fs from 'fs/promises';
 import path from 'path';
 import { ReactNode } from 'react';
+import Link from 'next/link';
 
 const Home = (props: { products: Array<{}>; children: ReactNode }) => {
   const { products } = props;
@@ -9,7 +10,9 @@ const Home = (props: { products: Array<{}>; children: ReactNode }) => {
   return (
     <ul>
       {products.map((product: any) => (
-        <li key={product.id}>{product.title}</li>
+        <li key={product.id}>
+          <Link href={`/${product.id}`}>{product.title}</Link>
+        </li>
       ))}
     </ul>
   );
